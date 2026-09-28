@@ -1,0 +1,181 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python Modules & Packages - 15 Assignments</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#162033;font-family:Segoe UI,Arial,sans-serif}header{position:sticky;top:0;z-index:5;background:white;border-bottom:1px solid #dce2ea;padding:24px 6%;box-shadow:0 4px 18px #0000000c}h1{font-size:clamp(30px,4vw,48px);margin:0}header p{font-size:18px;color:#667085;margin:8px 0 0}main{width:min(1120px,92%);margin:30px auto 80px}.intro{background:#172033;color:white;border-radius:20px;padding:28px;margin-bottom:25px}.intro h2{margin:0 0 10px;font-size:28px}.intro p{font-size:18px;line-height:1.6;margin:0;color:#e8edf5}.card{background:white;border:1px solid #dce2ea;border-radius:20px;padding:30px;margin:24px 0;box-shadow:0 10px 30px #1e293b0d}.meta{display:flex;justify-content:space-between;color:#5c687b;text-transform:uppercase;letter-spacing:.7px}.meta span{border:1px solid #cbd3df;border-radius:20px;padding:6px 11px;font-size:12px}.card h2{font-size:32px;margin:14px 0}.task{background:#f2f5f9;border-left:5px solid #172033;padding:17px 20px;border-radius:8px;margin:18px 0}.task h3{margin:0 0 8px}.task p{font-size:18px;line-height:1.65;margin:0}button{border:0;background:#172033;color:white;font-weight:700;font-size:16px;padding:13px 19px;border-radius:10px;cursor:pointer}.answer{display:none;margin-top:18px;padding:20px;border:1px solid #d6dde8;border-radius:14px;background:#fbfcfe}.answer.open{display:block}pre{white-space:pre-wrap;background:#101827;color:#f4f7fb;border-radius:12px;padding:18px;overflow:auto;font:15px/1.55 Consolas,monospace}.tip{position:fixed;right:20px;bottom:18px;background:#172033;color:white;padding:10px 14px;border-radius:20px;font-size:13px}@media(max-width:650px){.card{padding:20px}.card h2{font-size:25px}.task p{font-size:16px}.tip{display:none}}@media print{header{position:static}button,.tip{display:none}.answer{display:block!important}}
+</style></head><body><header><h1>Python Modules & Packages</h1><section class="card"><div class="meta"><b>Assignment 01</b><span>Beginner</span></div><h2>Calculator Module</h2><div class="task"><h3>Student Task</h3><p>Create calculator.py with add(), subtract(), multiply(). Import it in main.py and test 1200 and 300.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>calculator.py
+
+def add(a,b): return a+b
+def subtract(a,b): return a-b
+def multiply(a,b): return a*b
+
+main.py
+
+import calculator
+print(calculator.add(1200,300))
+print(calculator.subtract(1200,300))
+print(calculator.multiply(1200,300))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 02</b><span>Beginner</span></div><h2>Employee Salary Module</h2><div class="task"><h3>Student Task</h3><p>Create salary.py with calculate_salary(basic, bonus). Import only this function in app.py. Test Basic=30000, Bonus=5000.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>salary.py
+
+def calculate_salary(basic, bonus):
+    return basic + bonus
+
+app.py
+
+from salary import calculate_salary
+print(calculate_salary(30000,5000))
+# Output: 35000</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 03</b><span>Beginner</span></div><h2>Import with Alias</h2><div class="task"><h3>Student Task</h3><p>Import math module as m. Calculate area of circular garden with radius 7 and also find square root of 144.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>import math as m
+radius=7
+area=m.pi*radius**2
+print(round(area,2))
+print(m.sqrt(144))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 04</b><span>Beginner</span></div><h2>Random OTP Module</h2><div class="task"><h3>Student Task</h3><p>Create otp.py. Use random module to generate a 6-digit OTP. Import generate_otp() in login.py.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>otp.py
+
+import random
+def generate_otp():
+    return random.randint(100000,999999)
+
+login.py
+
+from otp import generate_otp
+print("OTP:",generate_otp())</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 05</b><span>Beginner</span></div><h2>Date & Time Utility</h2><div class="task"><h3>Student Task</h3><p>Use datetime module to print current order date/time in DD-MM-YYYY HH:MM format.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>from datetime import datetime
+now=datetime.now()
+print(now.strftime("%d-%m-%Y %H:%M"))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 06</b><span>Intermediate</span></div><h2>Student Result Module</h2><div class="task"><h3>Student Task</h3><p>Create result.py with percentage() and status(). 40% or above = PASS. Use both in student.py for 365 marks out of 500.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>result.py
+
+def percentage(total,obtained):
+    return obtained/total*100
+def status(p):
+    return "PASS" if p&gt;=40 else "FAIL"
+
+student.py
+
+from result import percentage,status
+p=percentage(500,365)
+print(p,status(p))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 07</b><span>Intermediate</span></div><h2>__name__ Practice</h2><div class="task"><h3>Student Task</h3><p>Create report.py. Direct execution should print a testing message, but importing report in main.py should not run the testing block.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>report.py
+
+def generate_report():
+    print("Sales Report Generated")
+
+if __name__ == "__main__":
+    print("Testing report.py directly")
+    generate_report()
+
+main.py
+
+import report
+report.generate_report()</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 08</b><span>Intermediate</span></div><h2>Your First Package</h2><div class="task"><h3>Student Task</h3><p>Create shop package with product.py and discount.py. Product returns Laptop; discount calculates final price. Use from main.py.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>ecommerce/
+  shop/
+    __init__.py
+    product.py
+    discount.py
+  main.py
+
+# product.py
+def get_product(): return "Laptop"
+
+# discount.py
+def apply_discount(price,p): return price-price*p/100
+
+# main.py
+from shop.product import get_product
+from shop.discount import apply_discount
+print(get_product(),apply_discount(50000,10))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 09</b><span>Intermediate</span></div><h2>__init__.py Public Interface</h2><div class="task"><h3>Student Task</h3><p>Modify shop package so main.py can use: from shop import get_product, apply_discount.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code># shop/__init__.py
+from .product import get_product
+from .discount import apply_discount
+
+# main.py
+from shop import get_product,apply_discount
+print(get_product())
+print(apply_discount(50000,10))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 10</b><span>Intermediate</span></div><h2>Banking Package</h2><div class="task"><h3>Student Task</h3><p>Create banking package with account.py and transaction.py. Start balance 10000, deposit 2500, print updated balance.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>bank_app/
+  banking/
+    __init__.py
+    account.py
+    transaction.py
+  main.py
+
+# account.py
+def check_balance(balance): return balance
+
+# transaction.py
+def deposit(balance,amount): return balance+amount
+
+# main.py
+from banking.account import check_balance
+from banking.transaction import deposit
+balance=10000
+print(check_balance(balance))
+print(deposit(balance,2500))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 11</b><span>Intermediate</span></div><h2>Relative Import</h2><div class="task"><h3>Student Task</h3><p>Create orders package with price.py and invoice.py. invoice.py must import total_price() using a relative import. Test price=2000, qty=3.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code># orders/price.py
+def total_price(price,qty): return price*qty
+
+# orders/invoice.py
+from .price import total_price
+def create_invoice(price,qty):
+    return total_price(price,qty)
+
+# main.py
+from orders.invoice import create_invoice
+print(create_invoice(2000,3)) # 6000</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 12</b><span>Advanced</span></div><h2>Nested Packages</h2><div class="task"><h3>Student Task</h3><p>Create company/hr and company/sales sub-packages. HR returns employee info; Sales calculates 5% incentive on 100000.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>company/
+  __init__.py
+  hr/
+    __init__.py
+    employee.py
+  sales/
+    __init__.py
+    incentive.py
+
+# employee.py
+def employee_info(name): return f"Employee: {name}"
+# incentive.py
+def calculate_incentive(sales): return sales*0.05
+# main.py
+from company.hr.employee import employee_info
+from company.sales.incentive import calculate_incentive
+print(employee_info("Rahul"))
+print(calculate_incentive(100000))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 13</b><span>Advanced</span></div><h2>Debug ModuleNotFoundError</h2><div class="task"><h3>Student Task</h3><p>utils/validation.py contains validate_email(). Student wrote import validation in root main.py and got ModuleNotFoundError. Fix it and explain why.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code># Correct import:
+from utils.validation import validate_email
+print(validate_email("student@gmail.com"))
+
+# validation.py
+def validate_email(email):
+    return "@" in email
+
+# Why? validation.py is inside utils package, not project root.</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 14</b><span>Advanced</span></div><h2>Avoid Circular Import</h2><div class="task"><h3>Student Task</h3><p>customer.py imports order.py and order.py imports customer.py. Refactor shared name-formatting logic into common.py to avoid circular dependency.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code># common.py
+def format_name(name): return name.strip().title()
+
+# customer.py
+from common import format_name
+def customer_details(name): return "Customer: "+format_name(name)
+
+# order.py
+from common import format_name
+def order_details(name,oid): return f"{format_name(name)} - Order {oid}"
+
+# main.py
+from customer import customer_details
+from order import order_details
+print(customer_details("rahul"))
+print(order_details("rahul",101))</code></pre></div></section><section class="card"><div class="meta"><b>Assignment 15</b><span>Challenge</span></div><h2>Final Project — Online Store</h2><div class="task"><h3>Student Task</h3><p>Build store package with products.py, billing.py, discount.py and invoice.py. Laptop Bag=2000, Qty=3. Apply 10% discount when subtotal >=5000. Expose functions through __init__.py.</p></div><button onclick="toggle(this)">Show Answer</button><div class="answer"><h3>Reference Answer</h3><pre><code>store/
+  __init__.py
+  products.py
+  billing.py
+  discount.py
+  invoice.py
+main.py
+
+# products.py
+def get_product(): return "Laptop Bag",2000
+# billing.py
+def subtotal(price,qty): return price*qty
+# discount.py
+def discount(total): return total*0.10 if total&gt;=5000 else 0
+# invoice.py
+def show(name,total,d):
+    print("Product:",name)
+    print("Subtotal:",total)
+    print("Discount:",d)
+    print("Final:",total-d)
+# __init__.py
+from .products import get_product
+from .billing import subtotal
+from .discount import discount
+from .invoice import show
+# main.py
+from store import get_product,subtotal,discount,show
+name,price=get_product(); total=subtotal(price,3); d=discount(total)
+show(name,total,d)
+# Final: 5400</code></pre></div></section></main><div class="tip">S = Show / Hide All</div><script>function toggle(b){let a=b.nextElementSibling;a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Hide Answer':'Show Answer'}document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='s'){let a=[...document.querySelectorAll('.answer')],open=!a.every(x=>x.classList.contains('open'));a.forEach(x=>x.classList.toggle('open',open));document.querySelectorAll('button').forEach(b=>b.textContent=open?'Hide Answer':'Show Answer')}})</script></body></html>
